@@ -1,8 +1,8 @@
-Travis CI: https://travis-ci.org/ucsb-cs56-f19/lab07-sampettus
+Travis CI: https://travis-ci.org/ucsb-cs56-f19/proj01-sampettus
 
-Java Doc: https://ucsb-cs56-f19.github.io/lab07-sampettus/
+Java Doc: https://ucsb-cs56-f19.github.io/proj01-sampettus/
 
-Heroku App: https://cs56-f19-lab07-sampettus.herokuapp.com/
+Heroku App: https://cs56-f19-proj01-sampettus.herokuapp.com/
 
 A simple Spring Boot webapp using:
 * Thymeleaf templating
