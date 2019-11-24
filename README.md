@@ -1,3 +1,5 @@
+Travis CI: https://travis-ci.org/ucsb-cs56-f19/lab07-sampettus
+
 Java Doc: https://ucsb-cs56-f19.github.io/lab07-sampettus/
 
 Heroku App: https://cs56-f19-lab07-sampettus.herokuapp.com/
