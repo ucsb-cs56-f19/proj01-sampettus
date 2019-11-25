@@ -1,4 +1,4 @@
-package hello;
+package earthquakes;
 
 // import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -15,8 +15,7 @@ import org.springframework.security.oauth2.client.registration.ClientRegistratio
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import hello.BootstrapLiterals;
-import hello.controllers.HomeController;
+import earthquakes.controllers.HomeController;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(HomeController.class)

@@ -1,10 +1,11 @@
-package hello;
+package earthquakes;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.List;
-import hello.entities.AppUser;
-import hello.repositories.*;
+import earthquakes.entities.AppUser;
+import earthquakes.services.*;
+import earthquakes.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.user.OAuth2User;
