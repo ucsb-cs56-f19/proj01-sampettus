@@ -8,14 +8,14 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import java.util.List;
 import earthquakes.geojson.FeatureCollection;
 import earthquakes.services.EarthquakeQueryService;
 import earthquakes.services.LocationQueryService;
 import earthquakes.searches.*;
 import java.util.Map;
 import java.util.HashMap;
-
+import earthquakes.osm.*;
 import com.nimbusds.oauth2.sdk.client.ClientReadRequest;
 
 @Controller
@@ -34,6 +34,8 @@ public class LocationsController {
         model.addAttribute("locSearch", locSearch);
         String json = e.getJSON(locSearch.getLocation());
         model.addAttribute("json", json);
+        List<Place> place = Place.fromJSON(json);
+        model.addAttribute("place", place);
         return "locations/results";
     }
 }
