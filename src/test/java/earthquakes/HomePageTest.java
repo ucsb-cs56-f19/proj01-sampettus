@@ -68,8 +68,15 @@ public class HomePageTest {
     public void getPage1_hasCorrectTitle() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML))
                 .andExpect(status().isOk())
+                .andExpect(xpath("/html/body/div/nav/div/ul[1]/li[1]/a").exists())
+                .andExpect(xpath("/html/body/div/nav/div/ul[1]/li[1]/a").string("Earthquake Search"));
+    }
+    @Test
+    public void getPageLocations_hasCorrectTitle() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML))
+                .andExpect(status().isOk())
                 .andExpect(xpath("/html/body/div/nav/div/ul[1]/li[2]/a").exists())
-                .andExpect(xpath("/html/body/div/nav/div/ul[1]/li[2]/a").string("Earthquake Search"));
+                .andExpect(xpath("/html/body/div/nav/div/ul[1]/li[2]/a").string("Locations"));
     }
     @Test
     public void getPageUsers_hasCorrectTitle() throws Exception {
