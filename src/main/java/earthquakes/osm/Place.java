@@ -8,17 +8,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.List;
 
 public class Place {
+    private static Logger logger = LoggerFactory.getLogger(Place.class);
     long place_id;
     double lat;
     double lon;
     String display_name;
     String type;
-    private static Logger logger = LoggerFactory.getLogger(Place.class);
      /**
      * Create a FeatureCollection object from json representation
      * 
      * @param json String of json returned by API endpoint {@code /classes/search}
-     * @return a new FeatureCollection object
+     * @return a new Place object
      * @see <a href=
      *      "https://tools.ietf.org/html/rfc7946">https://tools.ietf.org/html/rfc7946</a>
      */
@@ -27,8 +27,8 @@ public class Place {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-            List<Place> locationCollection = objectMapper.readValue(json, new TypeReference<List<Place>>(){});
-            return locationCollection;
+            List<Place> place = objectMapper.readValue(json, new TypeReference<List<Place> >(){});
+            return place;
         } catch (JsonProcessingException jpe) {
             logger.error("JsonProcessingException:" + jpe);
             return null;
