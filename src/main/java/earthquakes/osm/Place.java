@@ -22,12 +22,12 @@ public class Place {
      * @see <a href=
      *      "https://tools.ietf.org/html/rfc7946">https://tools.ietf.org/html/rfc7946</a>
      */
-    public static List<Place> fromJSON(String json) {
+    public static List<Place> listFromJSON(String json) {
         try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-            List<Place> place = objectMapper.readValue(json, new TypeReference<List<Place> >(){});
+            List<Place> place = mapper.readValue(json, new TypeReference<List<Place>>(){});
             return place;
         } catch (JsonProcessingException jpe) {
             logger.error("JsonProcessingException:" + jpe);
