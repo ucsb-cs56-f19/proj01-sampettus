@@ -5,10 +5,10 @@ public class LocSearch
     public LocSearch(){
         this.location = "";
     }
-    public void setDistance(String x){
+    public void setLocation(String x){
         this.location = x;
     }
-    public String getDistance(){
+    public String getLocation(){
         return this.location;
     }
 }
