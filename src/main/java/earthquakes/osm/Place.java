@@ -9,11 +9,11 @@ import java.util.List;
 
 public class Place {
     private static Logger logger = LoggerFactory.getLogger(Place.class);
-    long place_id;
-    double lat;
-    double lon;
-    String display_name;
-    String type;
+    public long place_id;
+    public double lat;
+    public double lon;
+    public String display_name;
+    public String type;
      /**
      * Create a FeatureCollection object from json representation
      * 
