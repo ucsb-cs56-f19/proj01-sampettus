@@ -49,24 +49,35 @@ public class LocationsController {
 <span class="nc" id="L49">        return &quot;locations/results&quot;;</span>
     }
     @GetMapping(&quot;/locations&quot;)    
-    public String index(Model model) {
-<span class="nc" id="L53">        Iterable&lt;Location&gt; locations= locationRepository.findAll();</span>
-<span class="nc" id="L54">        model.addAttribute(&quot;locations&quot;, locations);</span>
-<span class="nc" id="L55">        return &quot;locations/index&quot;;</span>
-    }    
+    public String index(Model model, OAuth2AuthenticationToken token) {
+<span class="nc" id="L53">        String uid = token.getPrincipal().getAttributes().get(&quot;id&quot;).toString();</span>
+<span class="nc" id="L54">        Iterable&lt;Location&gt; locations= locationRepository.findByUid(uid);</span>
+<span class="nc" id="L55">        model.addAttribute(&quot;locations&quot;, locations);</span>
+<span class="nc" id="L56">        return &quot;locations/index&quot;;</span>
+    }
+
+    @GetMapping(&quot;/locations/admin&quot;)    
+    public String admin(Model model) {
+<span class="nc" id="L61">        Iterable&lt;Location&gt; locations= locationRepository.findAll();</span>
+<span class="nc" id="L62">        model.addAttribute(&quot;locations&quot;, locations);</span>
+<span class="nc" id="L63">        return &quot;locations/admin&quot;;</span>
+    }   
+
     @PostMapping(&quot;/locations/add&quot;)
-    public String add(Location location, Model model) {
-<span class="nc" id="L59">      locationRepository.save(location);</span>
-<span class="nc" id="L60">      model.addAttribute(&quot;locations&quot;, locationRepository.findAll());</span>
-<span class="nc" id="L61">      return &quot;locations/index&quot;;</span>
+    public String add(Location location, Model model, OAuth2AuthenticationToken token) {
+<span class="nc" id="L68">        String uid = token.getPrincipal().getAttributes().get(&quot;id&quot;).toString();</span>
+<span class="nc" id="L69">        location.setUid(uid);</span>
+<span class="nc" id="L70">        locationRepository.save(location);</span>
+<span class="nc" id="L71">        model.addAttribute(&quot;locations&quot;, locationRepository.findByUid(uid));</span>
+<span class="nc" id="L72">        return &quot;locations/index&quot;;</span>
     }
     @DeleteMapping(&quot;/locations/delete/{id}&quot;)
     public String delete(@PathVariable(&quot;id&quot;) long id, Model model) {
-<span class="nc" id="L65">    Location location = locationRepository.findById(id)</span>
-<span class="nc" id="L66">            .orElseThrow(() -&gt; new IllegalArgumentException(&quot;Invalid courseoffering Id:&quot; + id));</span>
-<span class="nc" id="L67">    locationRepository.delete(location);</span>
-<span class="nc" id="L68">    model.addAttribute(&quot;locations&quot;, locationRepository.findAll());</span>
-<span class="nc" id="L69">    return &quot;locations/index&quot;;</span>
+<span class="nc" id="L76">    Location location = locationRepository.findById(id)</span>
+<span class="nc" id="L77">            .orElseThrow(() -&gt; new IllegalArgumentException(&quot;Invalid courseoffering Id:&quot; + id));</span>
+<span class="nc" id="L78">    locationRepository.delete(location);</span>
+<span class="nc" id="L79">    model.addAttribute(&quot;locations&quot;, locationRepository.findAll());</span>
+<span class="nc" id="L80">    return &quot;locations/index&quot;;</span>
 }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
